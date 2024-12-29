@@ -3,9 +3,9 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
     <div>
-      <div className="flex justify-between">
-        <div className="bg-[#1F2937] w-1/2">
-          <div className="text-[#FFFFFF] w-full text-center py-10 space-y-2 ml-28">
+      <div className="md:flex md:justify-between">
+        <div className="bg-[#1F2937] md:w-1/2">
+          <div className="text-[#FFFFFF] w-full text-center Md:text-center py-10 space-y-2 Md:ml-28">
             <h1 className="mb-3 font-bold">CONTACT US</h1>
             <div className="font-medium">
               <p>123 ABS Street, Uni 21, Bangladesh</p>
@@ -15,9 +15,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#111827] w-1/2">
+        <div className="bg-[#111827] md:w-1/2">
           <div className="w-full text-[#FFFFFF] text-center  py-10 space-y-3 ">
-            <div className="mr-80">
+            <div className="md:mr-80">
               <h1 className="font-bold mb-3">Follow US</h1>
               <p className="font-medium">Join us on social media</p>
             </div>
