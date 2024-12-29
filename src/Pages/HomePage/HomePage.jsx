@@ -3,6 +3,7 @@
 import Banner from './Banner';
 import BistroBoss from './BistroBoss/BistroBoss';
 import Category from './Category';
+import PopularMenu from './PopularMenu';
 
 const HomePage = () => {
     return (
@@ -11,6 +12,7 @@ const HomePage = () => {
            
             <Category></Category>
             <BistroBoss></BistroBoss>
+            <PopularMenu></PopularMenu>
         </div>
     );
 };
