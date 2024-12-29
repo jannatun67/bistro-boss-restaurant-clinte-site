@@ -28,11 +28,11 @@ const Category = () => {
         modules={[Pagination]}
         className="mySwiper "
       >
-        <SwiperSlide><img src={slide1}alt="" /><p className='text-4xl uppercase text-center -mt-20 text-white'>Salads</p></SwiperSlide>
-        <SwiperSlide><img src={slide2} alt="" /><p className='text-4xl uppercase text-center -mt-20 text-white'>pizzas</p></SwiperSlide>
-        <SwiperSlide><img src={slide3} alt="" /><p className='text-4xl uppercase text-center -mt-20 text-white'>Soups</p></SwiperSlide>
-        <SwiperSlide><img src={slide4} alt="" /><p className='text-4xl uppercase text-center -mt-20 text-white'>desserts</p></SwiperSlide>
-        <SwiperSlide><img src={slide5} alt="" /><p className='text-4xl uppercase text-center -mt-20 text-white'>Salads</p></SwiperSlide>
+        <SwiperSlide><img src={slide1}alt="" /><p className='md:text-4xl uppercase text-center -mt-20 text-white'>Salads</p></SwiperSlide>
+        <SwiperSlide><img src={slide2} alt="" /><p className='md:text-4xl uppercase text-center -mt-20 text-white'>pizzas</p></SwiperSlide>
+        <SwiperSlide><img src={slide3} alt="" /><p className='md:text-4xl uppercase text-center -mt-20 text-white'>Soups</p></SwiperSlide>
+        <SwiperSlide><img src={slide4} alt="" /><p className='md:text-4xl uppercase text-center -mt-20 text-white'>desserts</p></SwiperSlide>
+        <SwiperSlide><img src={slide5} alt="" /><p className='md:text-4xl uppercase text-center -mt-20 text-white'>Salads</p></SwiperSlide>
       </Swiper>
        </div>
     );

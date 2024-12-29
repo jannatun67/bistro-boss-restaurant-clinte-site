@@ -1,6 +1,7 @@
 
 
 import Banner from './Banner';
+import BistroBoss from './BistroBoss/BistroBoss';
 import Category from './Category';
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
             <Banner></Banner>
            
             <Category></Category>
+            <BistroBoss></BistroBoss>
         </div>
     );
 };
