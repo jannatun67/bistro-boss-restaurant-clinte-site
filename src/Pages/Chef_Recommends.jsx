@@ -3,18 +3,18 @@ import img from "../assets/home/slide5.jpg";
 
 const Chef_Recommends = () => {
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto pb-10">
       <Common_section
         heading={"CHEF RECOMMENDS"}
         subHeading={"--- Should Try ---"}
       ></Common_section>
-     <div>
+     <div className=" grid md:grid-cols-3 gap-4">
      <div className="card bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
+        <figure className=" pt-10">
           <img
             src={img}
             alt="Shoes"
-            className="rounded-xl"
+            className="rounded-xl h-[400px] w-[400px] object-cover"
           />
         </figure>
         <div className="card-body items-center text-center">
@@ -27,11 +27,11 @@ const Chef_Recommends = () => {
       </div>
 
       <div className="card bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
+        <figure className=" pt-10">
           <img
             src={img}
             alt="Shoes"
-            className="rounded-xl"
+            className="rounded-xl h-[400px] w-[400px] object-cover"
           />
         </figure>
         <div className="card-body items-center text-center">
@@ -44,11 +44,11 @@ const Chef_Recommends = () => {
       </div>
 
       <div className="card bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
+        <figure className=" pt-10">
           <img
             src={img}
             alt="Shoes"
-            className="rounded-xl"
+            className="rounded-xl h-[400px] w-[400px] object-cover"
           />
         </figure>
         <div className="card-body items-center text-center">

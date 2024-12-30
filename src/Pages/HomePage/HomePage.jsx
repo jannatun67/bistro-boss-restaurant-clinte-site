@@ -5,6 +5,8 @@ import Banner from './Banner';
 import BistroBoss from './BistroBoss/BistroBoss';
 import CallUs from './CallUs';
 import Category from './Category';
+import Featured from './Featured/Featured';
+
 import PopularMenu from './PopularMenu';
 
 const HomePage = () => {
@@ -17,6 +19,7 @@ const HomePage = () => {
             <PopularMenu></PopularMenu>
             <CallUs></CallUs>
             <Chef_Recommends></Chef_Recommends>
+           <Featured></Featured>
         </div>
     );
 };
