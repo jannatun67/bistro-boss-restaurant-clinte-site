@@ -8,6 +8,7 @@ import Category from './Category';
 import Featured from './Featured/Featured';
 
 import PopularMenu from './PopularMenu';
+import Testimonials from './Testimonials';
 
 const HomePage = () => {
     return (
@@ -20,6 +21,7 @@ const HomePage = () => {
             <CallUs></CallUs>
             <Chef_Recommends></Chef_Recommends>
            <Featured></Featured>
+           <Testimonials></Testimonials>
         </div>
     );
 };

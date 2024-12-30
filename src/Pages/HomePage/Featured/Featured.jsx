@@ -12,8 +12,8 @@ const Featured = () => {
              subHeading={"--- Check it out ---"}
             ></Common_section>
 
-            <div className="md:flex gap-8 items-center">
-                <img className="w-[400px] ml-48" src={FeaturedImg} alt="" />
+            <div className="md:flex gap-8 items-center ">
+                <img className="w-[400px] md:ml-48" src={FeaturedImg} alt="" />
                 <div className="space-y-2 text-white ">
                     <h1 className="text-xl">March 20, 2023</h1>
                     <h3 className="uppercase text-xl">Where can i get some?</h3>
