@@ -1,5 +1,6 @@
 
 
+import { Helmet } from 'react-helmet-async';
 import Chef_Recommends from '../Chef_Recommends';
 import Banner from './Banner';
 import BistroBoss from './BistroBoss/BistroBoss';
@@ -13,6 +14,9 @@ import Testimonials from './Testimonials';
 const HomePage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Bistro Boss/Home</title>
+            </Helmet>
             <Banner></Banner>
            
             <Category></Category>
