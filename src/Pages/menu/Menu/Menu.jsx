@@ -5,6 +5,10 @@ import menuImg from "../../../assets/menu/banner3.jpg"
 import UseMenu from '../../../hooks/UseMenu';
 import Common_section from '../../../Components/Common-section/Common_section';
 import MenuCategory from '../MenuCategory/MenuCategory';
+import Dessert from '../Dessert';
+import Pizza from '../Pizza';
+import Salad from '../Salad';
+import Soup from '../Soup';
 
 
 
@@ -21,13 +25,22 @@ const Menu = () => {
            <Helmet>
             <title>Bistro Boss/Menu</title>
            </Helmet>
-
+            {/* mean cover */}
            <Cover img={menuImg} title="Our Menu" paragraph="Would you like to try a dish?"></Cover>
+            {/* offer */}
            <Common_section
            heading={"TODAY'S OFFER"}
            subHeading={"--- Don't miss ---"}
            ></Common_section>
             <MenuCategory items={offered}></MenuCategory>
+            {/* dessert */}
+            <Dessert dessert={dessert}></Dessert>
+            {/* pizza */}
+            <Pizza pizza={pizza}></Pizza>
+            {/* salad */}
+            <Salad salad={salad}></Salad>
+            {/* soup */}
+            <Soup soup={soup}></Soup>
         </div>
     );
 };
