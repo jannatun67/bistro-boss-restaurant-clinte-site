@@ -38,7 +38,7 @@ const Menu = () => {
             {/* pizza */}
             <Pizza pizza={pizza}></Pizza>
             {/* salad */}
-            <Salad salad={salad}></Salad>
+            <Salad salad={salad} ></Salad>
             {/* soup */}
             <Soup soup={soup}></Soup>
         </div>

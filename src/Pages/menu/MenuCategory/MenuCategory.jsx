@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuItemCard from '../../Shared/MenuItemCard/MenuItemCard';
+import { Link } from 'react-router-dom';
 
 const MenuCategory = ({items}) => {
     return (
@@ -10,7 +11,9 @@ const MenuCategory = ({items}) => {
                 }
             </div>
             <div className="flex  justify-center mt-10">
-                <button className="btn bg-white border-b-2 border-b-black">View Full  Menu</button>
+               <Link to={`/order`}>
+               <button className="btn bg-white border-b-2 border-b-black">View Full  Menu</button>
+               </Link>
             </div>
         </div>
     );
