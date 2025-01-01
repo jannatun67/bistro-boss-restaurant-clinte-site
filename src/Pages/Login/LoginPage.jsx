@@ -1,35 +1,54 @@
-import { useEffect, useRef, useState } from 'react';
-import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
+import { useContext, useEffect, useRef, useState } from "react";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha
+} from "react-simple-captcha";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const LoginPage = () => {
-const captchaRef=useRef(null)
+  const { loginUser } = useContext(AuthContext);
+  const captchaRef = useRef(null);
 
-const [disabled,setDisabled]=useState(true)
+  const [disabled, setDisabled] = useState(true);
 
-  useEffect(()=>{
-    loadCaptchaEnginge(6); 
-  },[])
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
 
-    const handelLogin = e =>{
-        e.preventDefault()
-        const form= e.target;
-        const email=form.email.value;
-        const password=form.password.value;
-        console.log(email,password);
+  const handelLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handelValidateCaptcha = () => {
+    const user_captcha_value = captchaRef.current.value;
+
+    if (validateCaptcha(user_captcha_value)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
     }
-
-    const handelValidateCaptcha=() =>{
-      const user_captcha_value= captchaRef.current.value;
-    
-      if (validateCaptcha(user_captcha_value)) {
-        setDisabled(false)
-      }
-      else{
-        setDisabled(true)
-      }
-    }
+  };
   return (
-    <div className="hero bg-base-200 min-h-screen">
+   <div>
+    <Helmet>
+      <title>bistro boss/ Login</title>
+    </Helmet>
+     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col md:flex-row-reverse">
         <div className="text-center md:w-1/2 lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -74,7 +93,7 @@ const [disabled,setDisabled]=useState(true)
 
             <div className="form-control">
               <label className="label">
-              <LoadCanvasTemplate />
+                <LoadCanvasTemplate />
               </label>
               <input
                 type="text"
@@ -84,16 +103,32 @@ const [disabled,setDisabled]=useState(true)
                 className="input input-bordered"
                 required
               />
-              <button onClick={handelValidateCaptcha} className="btn btn-outline btn-xs mt-4">validate</button>
+              <button
+                onClick={handelValidateCaptcha}
+                className="btn btn-outline btn-xs mt-4"
+              >
+                validate
+              </button>
             </div>
 
             <div className="form-control mt-6">
-              <button disabled={disabled} className="btn btn-primary">Login</button>
+              <button disabled={disabled} className="btn bg-[#D1A054] text-white">
+                Login
+              </button>
             </div>
+
+            <p>
+             <small> Now Here?{" "}</small>
+              <Link to="/register"
+                className="text-[#D1A054]">
+                Create a New Account
+              </Link>
+            </p>
           </form>
         </div>
       </div>
     </div>
+   </div>
   );
 };
 
