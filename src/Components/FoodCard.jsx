@@ -3,16 +3,18 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import UseAxios from "../hooks/UseAxios";
+import UseCart from "../hooks/UseCart";
 
 
 const FoodCard = ({ item }) => {
   const{user}=useContext(AuthContext)
   const navigate=useNavigate()
   const AxiosSecure= UseAxios()
+  const [,refetch]= UseCart()
   const { name, recipe, image,price,_id } = item;
 
   const handelAddToCart=(food)=>{
-    console.log(food, user?.email);
+  
     if (user && user?.email) {
       const cartItem ={
         menuId:_id,
@@ -32,6 +34,8 @@ const FoodCard = ({ item }) => {
             showConfirmButton: false,
             timer: 1500
           });
+          //refetch  cart to update the card item the count
+          refetch()
         }
       })
     }
