@@ -1,10 +1,12 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/Firebase.config';
+import { useLocation } from 'react-router-dom';
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
+    const location=useLocation
     const[user,setUser]=useState(null)
     const [loading,setLoading]=useState(true)
 
@@ -25,6 +27,12 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return signOut(auth)
     }
+    // update user
+    const updateUser= (name,photo)=>{
+     return updateProfile(auth.currentUser, {
+            displayName:name, photoURL:photo
+          })
+    }
 
     useEffect(()=>{
      const unsubscribe=onAuthStateChanged(auth, currentUser => {
@@ -42,7 +50,9 @@ const AuthProvider = ({children}) => {
         loading,
         loginUser,
         createUser,
-        logOut
+        logOut,
+        location,
+        updateUser
     }
     return (
         <AuthContext.Provider value={info}>
