@@ -1,7 +1,9 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword,   onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/Firebase.config';
 import { useLocation } from 'react-router-dom';
+import { GoogleAuthProvider } from "firebase/auth";
+import UseAxiosPublic from '../hooks/UseAxiosPublic';
 
 export const AuthContext = createContext(null);
 
@@ -9,6 +11,17 @@ const AuthProvider = ({children}) => {
     const location=useLocation
     const[user,setUser]=useState(null)
     const [loading,setLoading]=useState(true)
+    const GoogleProvider = new GoogleAuthProvider();
+    const axiosPublic=UseAxiosPublic()
+
+
+
+    // Google Login
+
+    const googleLogin= () =>{
+        setLoading(true)
+       return signInWithPopup(auth, GoogleProvider)
+    }
 
     // register
     const createUser=(email, password)=>{
@@ -37,13 +50,26 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
      const unsubscribe=onAuthStateChanged(auth, currentUser => {
            setUser(currentUser)
-           console.log("current user",currentUser);
+         if (currentUser) {
+            const userInfo={
+                email:currentUser?.email
+            }
+            axiosPublic.post("/jwt",userInfo)
+            .then(res=> {
+                if (res.data.token) {
+                    localStorage.setItem("access token",res.data.token)
+                }
+            })
+         }
+         else{
+            localStorage.removeItem("access token")
+         }
            setLoading(false)
           });
           return ()=>{
             return unsubscribe()
           }
-    },[])
+    },[axiosPublic])
     const info={
         user,
         setUser,
@@ -52,7 +78,8 @@ const AuthProvider = ({children}) => {
         createUser,
         logOut,
         location,
-        updateUser
+        updateUser,
+        googleLogin
     }
     return (
         <AuthContext.Provider value={info}>

@@ -4,39 +4,51 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import UseAxiosPublic from "../../hooks/UseAxiosPublic";
+import SocialLogin from "../../Components/SocialLogin";
 
 const Register = () => {
+  const axiosPublic = UseAxiosPublic()
+  // console.log(axiosPublic);
   const navigate=useNavigate()
     const{createUser,updateUser}=useContext(AuthContext)
   const {register,handleSubmit,reset,formState: { errors }} = useForm();
-
+  
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
    createUser(data.email, data.password)
    .then(result =>{
     const loggedUser=result.user;
-    console.log(loggedUser);
+    // console.log(loggedUser);
     updateUser(data.name,data.PhotoUrl)
     .then(() => {
-      console.log("user profile info update");
-      reset()
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "User Profile Update SuccessFully",
-        showConfirmButton: false,
-        timer: 1500
-      });
-      navigate('/')
+      const userInfo ={
+        name:data.name,
+        email:data.email
+      }
+    // create user entry in the database
+      axiosPublic.post("/users",userInfo)
+      .then(res=>{
+        if (res.data.insertedId) {
+          console.log(" user Added to the database");
+          reset()
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Profile Update SuccessFully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate('/')
+        }
+      })
     })
     .catch((error) => {
       console.log(error);
     });
    })
-   .catch(error =>{
-    console.log(error);
-   })
+   
   };
 
   return (
@@ -143,6 +155,9 @@ const Register = () => {
               <small>Already registered?</small>{" "}
               <Link to="/login">Go to log in</Link>
             </p>
+            <div className=" flex justify-center">
+              <SocialLogin></SocialLogin>
+            </div>
           </form>
         </div>
       </div>

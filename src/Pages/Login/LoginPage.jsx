@@ -8,6 +8,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
@@ -131,6 +132,9 @@ const LoginPage = () => {
                 Create a New Account
               </Link>
             </p>
+           <div className="flex justify-center">
+           <SocialLogin></SocialLogin>
+           </div>
           </form>
         </div>
       </div>

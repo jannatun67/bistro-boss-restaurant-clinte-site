@@ -23,7 +23,7 @@ const Cart = () => {
       }).then((result) => {
         if (result.isConfirmed) {
 
-        AxiosSecure.delete(`http://localhost:5000/carts/${id}`)
+        AxiosSecure.delete(`/carts/${id}`)
         .then(res=>{
             console.log(res.data)
             
