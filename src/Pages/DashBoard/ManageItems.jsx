@@ -4,6 +4,7 @@ import UseMenu from "../../hooks/UseMenu";
 import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAxios from "../../hooks/UseAxios";
+import { Link } from "react-router-dom";
 
 
 const ManageItems = () => {
@@ -86,7 +87,9 @@ const ManageItems = () => {
           </td>
           <td>${item?.price}</td>
           <th>
+            <Link to={`/dashboard/UpdateItem/${item?._id}`}>
             <button onClick={()=> handelEditItem()} className="btn  bg-[#D1A054] text-white text-xl"><FaRegEdit /></button>
+            </Link>
           </th>
           <th>
             <button onClick={()=> handelDeleteItem(item)} className="btn  bg-red-800 text-white text-xl"><RiDeleteBin6Line /></button>
