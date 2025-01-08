@@ -52,7 +52,7 @@ const Cart = () => {
         <button className="btn bg-[#D1A054] text-white">Pay</button>
       </div>
 
-      <div className="overflow-x-auto mt-4 px-32">
+      <div className="overflow-x-auto mt-4 md:px-32">
         <table className="table">
           {/* head */}
           <thead className="bg-[#D1A054] text-white">
